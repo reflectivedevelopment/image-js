@@ -1,12 +1,18 @@
 const env = 'browser';
 const ImageData = self.ImageData;
 const DOMImage = self.Image;
+var globalCanvas = null;
 
 export function createCanvas(width, height) {
-  let canvas = self.document.createElement('canvas');
+//  let canvas = self.document.createElement('canvas');
+  canvas = globalCanvas;
   canvas.width = width;
   canvas.height = height;
   return canvas;
+}
+
+export function setCanvas(canvas) {
+  globalCanvas = canvas;
 }
 
 export function fetchBinary(url, { withCredentials = false } = {}) {
